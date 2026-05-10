@@ -489,7 +489,11 @@ public class PreferenceAdapter {
         if (null == context) {
             return "en";
         }
-        return PreferenceManager.getDefaultSharedPreferences(context).getString(context.getString(R.string.key_cardlanguage), "en");
+        String lang = PreferenceManager.getDefaultSharedPreferences(context).getString(context.getString(R.string.key_cardlanguage), "en");
+        if ("jp".equals(lang)) {
+            lang = "ja";
+        }
+        return lang;
     }
 
     /* Default fragment */
@@ -1159,6 +1163,10 @@ edit.putString(context.getString(R.string.key_lastUpdate), lastUpdate);
                 context.getString(R.string.key_searchLanguages), defaultlangs);
         if (langs.isEmpty()) {
             langs = defaultlangs;
+        }
+        if (langs.contains("jp")) {
+            langs.remove("jp");
+            langs.add("ja");
         }
         return langs;
     }

@@ -1764,7 +1764,7 @@ public class CardDbAdapter {
                 } else if (Objects.equals(lang, "es")) {
                     key_name_languages.add(KEY_NAME_SPANISH);
                     key_name_no_accent_languages.add(KEY_NAME_NO_ACCENT_SPANISH);
-                } else if (Objects.equals(lang, "jp")) {
+                } else if (Objects.equals(lang, "ja")) {
                     key_name_languages.add(KEY_NAME_JAPANESE);
                     key_name_no_accent_languages.add(KEY_NAME_NO_ACCENT_JAPANESE);
                 } else if (Objects.equals(lang, "ru")) {
@@ -2946,7 +2946,7 @@ public class CardDbAdapter {
                 key_name_languages.add(KEY_NAME_NO_ACCENT_ITALIAN);
             } else if (Objects.equals(lang, "es")) {
                 key_name_languages.add(KEY_NAME_NO_ACCENT_SPANISH);
-            } else if (Objects.equals(lang, "jp")) {
+            } else if (Objects.equals(lang, "ja")) {
                 key_name_languages.add(KEY_NAME_NO_ACCENT_JAPANESE);
             } else if (Objects.equals(lang, "ru")) {
                 key_name_languages.add(KEY_NAME_NO_ACCENT_RUSSIAN);
