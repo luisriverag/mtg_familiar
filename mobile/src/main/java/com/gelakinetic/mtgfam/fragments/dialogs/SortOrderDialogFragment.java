@@ -29,6 +29,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -138,8 +139,18 @@ public class SortOrderDialogFragment extends FamiliarDialogFragment {
                         colorIdentityAdded = true;
                         break;
                     }
+                    case CardDbAdapter.KEY_NUMBER: {
+                        name = getResources().getString(R.string.search_collectors_number);
+                        collectorsNumberAdded = true;
+                        break;
+                    }
                 }
-                options.add(new SortOption(name, ascending, key, idx++));
+
+                // Don't add duplicate entries, which could have leaked in due to a prior bug
+                SortOption sso = new SortOption(name, ascending, key, idx++);
+                if (!options.contains(sso)) {
+                    options.add(sso);
+                }
             }
 
             /* Sorting by order was added later, so if it's not in the given string and price is,
@@ -329,6 +340,14 @@ public class SortOrderDialogFragment extends FamiliarDialogFragment {
          */
         public boolean getAscending() {
             return mAscending;
+        }
+
+        @Override
+        public boolean equals(@Nullable Object obj) {
+            if (obj instanceof SortOption) {
+                return this.mDatabaseKey.equals(((SortOption) obj).mDatabaseKey);
+            }
+            return false;
         }
     }
 }
